@@ -1,7 +1,5 @@
-exports.handler = async function(event) {
-  const { start, end } = event.queryStringParameters || {};
-
-  const apiUrl = `https://cloud.umami.is/share/uMWnWOBHVuIVhfCZ/monumental-madeleine-1eeaaf.netlify.app/pages?start=${start}&end=${end}`;
+exports.handler = async function () {
+  const apiUrl = "https://cloud.umami.is/share/uMWnWOBHVuIVhfCZ/monumental-madeleine-1eeaaf.netlify.app/pages";
 
   const response = await fetch(apiUrl);
   const text = await response.text();
