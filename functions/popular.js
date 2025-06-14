@@ -1,14 +1,15 @@
-export async function handler(event) {
-  const apiKey = process.env.UMAMI_API_KEY;
-  console.log("🔑 UMAMI_API_KEY:", apiKey);  // 🔍 debug
-
+exports.handler = async function(event) {
   const { start, end } = event.queryStringParameters || {};
+  const token = process.env.UMAMI_API_KEY;
+  
+  console.log("🔐 API KEY dipakai:", token?.slice(0, 10) + "...");
+
   const apiUrl = `https://cloud.umami.is/api/websites/ac1250c2-e2aa-48a1-9b97-205d83de250e/stats/pages?start=${start}&end=${end}`;
   const response = await fetch(apiUrl, {
-    headers: { Authorization: `Bearer ${apiKey}` }
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   });
-
-  console.log("🌐 Fetch status:", response.status);  // 🔍 debug
 
   const data = await response.json();
 
@@ -20,4 +21,4 @@ export async function handler(event) {
     },
     body: JSON.stringify(data)
   };
-}
+};
