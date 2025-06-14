@@ -1,5 +1,5 @@
 exports.handler = async function () {
-  const apiUrl = "https://cloud.umami.is/share/data/uMWnWOBHVuIVhfCZ/monumental-madeleine-1eeaaf.netlify.app";
+  const apiUrl = "https://cloud.umami.is/api/share/data/uMWnWOBHVuIVhfCZ/monumental-madeleine-1eeaaf.netlify.app";
 
   const response = await fetch(apiUrl);
   const json = await response.json();
@@ -13,6 +13,6 @@ exports.handler = async function () {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(json.pageviews) // Atau kirim semua: JSON.stringify(json)
+    body: JSON.stringify(json.pageviews)
   };
 };
