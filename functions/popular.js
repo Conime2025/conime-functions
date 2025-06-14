@@ -4,7 +4,7 @@ exports.handler = async function(event) {
   
   console.log("🔐 API KEY dipakai:", token?.slice(0, 10) + "...");
 
-  const apiUrl = `https://cloud.umami.is/api/websites/ac1250c2-e2aa-48a1-9b97-205d83de250e/stats/pages?start=${start}&end=${end}`;
+  const apiUrl = `https://cloud.umami.is/api/websites/ac7c54ac-52e5-4d84-876e-d6002d4db25e/stats/pages?start=${start}&end=${end}`;
   const response = await fetch(apiUrl, {
     headers: {
       Authorization: `Bearer ${token}`
