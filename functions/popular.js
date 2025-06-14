@@ -1,12 +1,13 @@
-const fetch = require("node-fetch");
-
-exports.handler = async function(event) {
+export async function handler(event) {
   const { start, end } = event.queryStringParameters || {};
 
+  const apiKey = process.env.UMAMI_API_KEY;
+
   const apiUrl = `https://cloud.umami.is/api/websites/ac1250c2-e2aa-48a1-9b97-205d83de250e/stats/pages?start=${start}&end=${end}`;
+
   const response = await fetch(apiUrl, {
     headers: {
-      Authorization: `Bearer ${process.env.UMAMI_API_KEY}`
+      Authorization: `Bearer ${apiKey}`
     }
   });
 
@@ -20,4 +21,4 @@ exports.handler = async function(event) {
     },
     body: JSON.stringify(data)
   };
-};
+}
